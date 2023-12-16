@@ -1,0 +1,162 @@
+import random
+
+
+
+def check_win(user_c, opp_c):
+    #user selcts rock
+    user_c = int(user_c)
+    opp_c = int(opp_c)
+    if user_c == 1:
+        if opp_c == 1:
+            return 't'
+        if opp_c == 2:
+            return 'l'
+        if opp_c == 3:
+            return 'w'
+    #user selects paper
+    if user_c == 2:
+        if opp_c == 1:
+            return 'w'
+        if opp_c == 2:
+            return 't'
+        if opp_c == 3:
+            return 'l'
+    #user selects sciscors
+    if user_c == 3:
+        if opp_c == 1:
+            return 'l'
+        if opp_c == 2:
+            return 'w'
+        if opp_c == 3:
+            return 't'
+       
+def Richard():
+    return 1
+def Payton():
+    return 2
+def Sally():
+    return 3
+def Random_Rex():
+    return random.randint(1,3)
+
+
+def start_screen():
+    print("Welcome to ROCK, PAPER, SCISSORS!\n You will face off against a series of 4 opponents.\n You will have 3 lives and will gain no more! GOOD LUCK!\nRock=1\nPaper=2\nScissors=3\n")
+    x = 'b'
+    while x != 'a':
+        x = input("Press a to continue.: ")
+    print("Your fist opponent will be Richard!:")
+
+
+
+
+def win_richard_screen():
+   print("You have beat Richard! Your next opponent will be Payton!.")
+   x = 'b'
+   while x != 'a':
+       x = input("Press a to continue.:")
+   print("You are now facing Payton!")
+
+
+def win_payton_screen():
+   print("You have beat Payton! Your next opponent will be Sally!")
+   x = 'b'
+   while x != 'a':
+       x = input("Press a to continue.:")
+   print("You are now facing Sally!")
+
+
+def win_sally_screen():
+   print("You have beat Sally! Your next opponent will be Random Rex.")
+   x = 'b'
+   while x != 'a':
+       x = input("Press a to continue.:")
+   print("You are now facing Random Rex!")
+
+def checklives(L):
+    if L == 0:
+        print("You Have Run Out Of Lives")
+        x = input("press 'y' to continue and 'n' to exit the game")
+        if x == 'y':
+            main()
+        if x == 'n':
+            exit()
+
+
+
+
+
+def main():
+    start_screen()
+    lives = 3
+    #first fight
+    fight = True
+    while fight == True:
+        x = input("Rock = 1\nPaper = 2\nSciscors = 3\nenter a number:")
+        who_won = check_win(x,Richard())
+        if who_won == 'w':
+            print ("You have won!")
+            fight = False
+        if who_won == 'l':
+            lives = lives - 1
+            checklives(lives)
+            print("You have lost you now have ", lives , " remaining...")
+        if who_won == 't':
+            print("TIE, Try again!")
+    win_richard_screen()
+   
+    #second fight
+    fight = True
+    while fight == True:
+        x = input("Rock = 1\nPaper = 2\nSciscors = 3\nenter a number:")
+        who_won = check_win(x,Payton())
+        if who_won == 'w':
+            print ("You have won!")
+            fight = False
+        if who_won == 'l':
+            lives = lives - 1
+            checklives(lives)
+            print("You have lost you now have ", lives , " remaining...")
+        if who_won == 't':
+            print("TIE, Try again!")
+    win_payton_screen()
+   
+    #third fight
+    fight = True
+    while fight == True:
+        x = input("Rock = 1\nPaper = 2\nSciscors = 3\nenter a number:")
+        who_won = check_win(x,Sally())
+        if who_won == 'w':
+            print ("You have won!")
+            fight = False
+        if who_won == 'l':
+            lives = lives - 1
+            checklives(lives)
+            print("You have lost you now have ", lives , " remaining...")
+        if who_won == 't':
+            print("TIE, Try again!")
+    win_sally_screen()
+
+
+    #fourth fight
+    fight = True
+    while fight == True:
+        x = input("Rock = 1\nPaper = 2\nSciscors = 3\nenter a number:")
+        who_won = check_win(x,Random_Rex())
+        if who_won == 'w':
+            print ("You have won!")
+            fight = False
+        if who_won == 'l':
+            lives = lives - 1
+            checklives(lives)
+            print("You have lost you now have ", lives , " remaining...")
+        if who_won == 't':
+            print("TIE, Try again!")
+
+
+  
+
+
+
+
+main()
